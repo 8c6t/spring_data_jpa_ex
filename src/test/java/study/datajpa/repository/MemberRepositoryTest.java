@@ -11,6 +11,7 @@ import study.datajpa.entity.Team;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -175,6 +176,27 @@ class MemberRepositoryTest {
 
         // then
         result.stream().forEach(member -> System.out.println("member = " + member));
+    }
+    
+    @Test
+    public void returnType() throws Exception {
+        Member m1 = new Member("AAA", 10);
+        Member m2 = new Member("BBB", 20);
+        memberRepository.save(m1);
+        memberRepository.save(m2);
+                
+        List<Member> aaa = memberRepository.findListByUsername("AAA");
+        Member findMember = memberRepository.findMemberByUsername("AAA");
+        Optional<Member> findMemberOption = memberRepository.findOptionByUsername("AAA");
+
+        List<Member> result = memberRepository.findListByUsername("asdfasdf");
+        System.out.println(result.size());
+
+        Member nullMember = memberRepository.findMemberByUsername("asdfasdf");
+        System.out.println("nullMember = " + nullMember);
+
+        Optional<Member> emptyMember = memberRepository.findOptionByUsername("asdfasdf");
+        System.out.println("emptyMember = " + emptyMember);
     }
 
 }
