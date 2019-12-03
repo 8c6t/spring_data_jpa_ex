@@ -19,6 +19,8 @@ class MemberRepositoryTest {
 
     @Test
     public void testMember() throws Exception {
+        System.out.println("memberRepository = " + memberRepository.getClass());
+
         // given
         Member member = new Member("memberA");
 
