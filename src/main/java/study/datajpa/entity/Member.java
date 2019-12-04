@@ -16,7 +16,7 @@ import static javax.persistence.FetchType.LAZY;
         query = "SELECT m FROM Member m WHERE m.username = :username"
 )
 @NamedEntityGraph(name = "Member.all", attributeNodes = @NamedAttributeNode("team"))
-public class Member {
+public class Member extends BaseEntity {
 
     @Id @GeneratedValue
     @Column(name = "MEMBER_ID")
