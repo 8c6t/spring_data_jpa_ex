@@ -34,6 +34,9 @@ class MemberRepositoryTest {
     @PersistenceContext
     EntityManager em;
 
+    @Autowired
+    MemberQueryRepository memberQueryRepository;
+
     @Test
     public void testMember() throws Exception {
         System.out.println("memberRepository = " + memberRepository.getClass());
@@ -320,6 +323,11 @@ class MemberRepositoryTest {
         memberRepository.findLockByUsername("member1");
 
     }
-    
+
+    @Test
+    public void callCustom() {
+        List<Member> result = memberRepository.findMemberCustom();
+    }
+
 
 }
